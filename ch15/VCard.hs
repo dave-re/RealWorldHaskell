@@ -27,8 +27,9 @@ oneBusinessPhone :: [(Context, Phone)] -> Maybe Phone
 oneBusinessPhone ps = lookup Business ps `mplus` lookup Mobile ps
 
 allPersonalPhones :: [(Context, Phone)] -> [Phone]
-allPersonalPhones ps = map snd $ filter (contextIs Home) ps `mplus` 
-								 filter (contextIs Mobile) ps
+allPersonalPhones ps = map snd $ 
+                  filter (contextIs Home) ps `mplus` 
+								  filter (contextIs Mobile) ps
 
 lookupM :: (MonadPlus m, Eq a) => a -> [(a,b)] -> m b
 lookupM _ [] 	= mzero
