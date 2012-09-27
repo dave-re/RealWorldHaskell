@@ -19,3 +19,9 @@ next = S $ do st <- get
                 [] -> return Nothing
                 (x:xs) -> do put xs
                              return (Just x)
+
+showTwo :: (Show s) => Supply s String
+showTwo = do
+    a <- next
+    b <- next
+    return ("a: " ++ show a ++ ", b: " ++ show b)
